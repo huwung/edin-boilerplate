@@ -24,6 +24,7 @@
     "rupture": "^0.6.1"
   },
   "dependencies": {
+    "del": "^2.2.2",
     "jstransformer-markdown-it": "^0.2.3"
   }
 }
