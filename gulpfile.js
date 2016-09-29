@@ -112,11 +112,11 @@ gulp.task('imagemin', function() {
 
 
 
-// Copy anything unprocessed in assets
+// Copy fonts
 
-gulp.task('copy-assets', function() {
-	gulp.src('assets/**/*')
-		.pipe(gulp.dest('build'))
+gulp.task('copy-fonts', function() {
+	gulp.src('assets/fonts/**/*')
+		.pipe(gulp.dest('build/fonts/'))
 });
 
 
@@ -160,6 +160,6 @@ gulp.task('clean-build', function() {
 
 // Run Tasks
 
-gulp.task('watch', ['pug:watch', 'stylus:watch', 'concat', 'copy-non-svg', 'imagemin', 'browser-sync', 'watch-tasks']);
-gulp.task('build', ['pug:build', 'stylus:build', 'concat', 'copy-non-svg', 'imagemin', 'browser-sync']);
+gulp.task('watch', ['pug:watch', 'stylus:watch', 'concat', 'copy-non-svg', 'imagemin', 'copy-fonts', 'browser-sync', 'watch-tasks']);
+gulp.task('build', ['pug:build', 'stylus:build', 'concat', 'copy-non-svg', 'imagemin', 'copy-fonts', 'browser-sync']);
 gulp.task('clean', ['clean-build']);
