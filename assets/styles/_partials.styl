@@ -3,77 +3,77 @@
 *,
 *:before,
 *:after
-	box-sizing border-box
-	
+  box-sizing border-box
+  
 
-	
+  
 // Some helper classes
 
 .hidden
-	display none
-	
+  display none
+  
 .bold
-	font-weight 700
-	
+  font-weight 700
+  
 .italic
-	font-style italic
-	
+  font-style italic
+  
 
 
 // Selection and tap highlight color
-	
+  
 selection()
-	::-moz-selection
-		background-color colorSecondary
-		color colorBlack
-	::selection
-		background-color colorSecondary
-		color colorBlack
-		
+  ::-moz-selection
+    background-color colorSecondary
+    color colorBlack
+  ::selection
+    background-color colorSecondary
+    color colorBlack
+    
 *
-	-webkit-tap-highlight-color rgba(colorPrimary, 0.4)
+  -webkit-tap-highlight-color rgba(colorPrimary, 0.4)
 
 
 // No JS Alert and remove noscroll if no-js
-		
+    
 .no-js-alert
-	width 100%
-	background-color red
-	color white
-	text-align center
-	position relative
-	top 0
-	left 0
-	z-index 7000
-	margin-bottom pad
-	padding (pad/2)
-	
-	a
-		color white
-		text-decoration underline
+  width 100%
+  background-color red
+  color white
+  text-align center
+  position relative
+  top 0
+  left 0
+  z-index 7000
+  margin-bottom pad
+  padding (pad/2)
+  
+  a
+    color white
+    text-decoration underline
 
 html
-	&.no-js
-			
-		body.noscroll
-			overflow visible
-			
-		main
-			opacity 1
-			visibility visible
-			
+  &.no-js
+      
+    body.noscroll
+      overflow visible
+      
+    main
+      opacity 1
+      visibility visible
+      
 
 
 
 // Define main containers
 
 .container
-	width container
-	margin 0 auto
-	
+  width container
+  margin 0 auto
+  
 .small-container
-	max-width smallContainer
-	margin 0 auto
-	
-	+below(smallContainer)
-		padding 0 (pad/2)
+  max-width smallContainer
+  margin 0 auto
+  
+  +below(smallContainer)
+    padding 0 (pad/2)
