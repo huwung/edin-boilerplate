@@ -10,3 +10,7 @@
     3. `gulp clean` to clean the `build` folder
 
 If you get any errors when running `gulp`, try installing the Stylus plugins globally by running `npm install -g jeet@6.1.2 nib rupture`.
+
+## Todo:
+1. Add a `globals.json` file defining main variables
+2. Add JS linting
