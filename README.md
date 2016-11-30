@@ -1,4 +1,4 @@
-#Edin's Website Boilerplate
+#Edin's Boilerplate
 
 1. Clone this repo
 2. Make sure you have [Node.js](https://nodejs.org/en/download/current/) installed
