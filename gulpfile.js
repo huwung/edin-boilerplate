@@ -38,8 +38,7 @@ gulp.task('pug:build', function() {
       locals: LOCALS,
       pretty: false
     }))
-    .pipe(gulp.dest('build/'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('build/'));
 });
 
 
@@ -64,8 +63,7 @@ gulp.task('stylus:build', function () {
       compress: true,
       use: [jeet(), nib(), rupture()]
     }))
-    .pipe(gulp.dest('build/css'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('build/css'));
 });
 
 
@@ -75,17 +73,25 @@ gulp.task('stylus:build', function () {
 
 var jsFiles = [
   'assets/js/jquery.js',
+  'assets/js/pace.js',
+  'assets/js/TweenMax.js',
+  'assets/js/bez.js',
+  'assets/js/inview.js',
   'assets/js/main.js'
 ];
 
-gulp.task('concat', function() {
+gulp.task('js:watch', function() {
   gulp.src(jsFiles)
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest('build/js'))
-    .pipe(rename('scripts.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream());
+});
+
+gulp.task('js:build', function() {
+  gulp.src(jsFiles)
+    .pipe(concat('scripts.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('build/js'));
 });
 
 
@@ -160,6 +166,6 @@ gulp.task('clean-build', function() {
 
 // Run Tasks
 
-gulp.task('watch', ['pug:watch', 'stylus:watch', 'concat', 'copy-non-svg', 'imagemin', 'copy-fonts', 'browser-sync', 'watch-tasks']);
-gulp.task('build', ['pug:build', 'stylus:build', 'concat', 'copy-non-svg', 'imagemin', 'copy-fonts']);
+gulp.task('watch', ['pug:watch', 'stylus:watch', 'js:watch', 'copy-non-svg', 'imagemin', 'copy-fonts', 'browser-sync', 'watch-tasks']);
+gulp.task('build', ['pug:build', 'stylus:build', 'js:build', 'copy-non-svg', 'imagemin', 'copy-fonts']);
 gulp.task('clean', ['clean-build']);
