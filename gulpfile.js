@@ -147,7 +147,7 @@ gulp.task('browser-sync', function() {
 gulp.task('watch-tasks', function() {
   gulp.watch('views/**/*.pug', ['pug:watch']);
   gulp.watch('assets/styles/**/*.styl', ['stylus:watch']);
-  gulp.watch('assets/js/**/*.js', ['concat']);
+  gulp.watch('assets/js/**/*.js', ['js:watch']);
   gulp.watch('assets/images/vector/**/*', ['imagemin']);
   gulp.watch('assets/images/raster/**/*', ['copy-non-svg']);
 });
