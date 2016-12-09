@@ -1,0 +1,56 @@
+head
+  block vars
+
+  //- The below 3 meta tags must come first in the head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1')  
+
+  meta(name='description', content='')
+  meta(name='author', content='')
+  meta(name='robots', content='index, follow, archive')
+  meta(name='google-site-verification', content='')
+  link(rel='canonical', href='https://example.com')
+
+  //- Schema.org markup for Google
+  meta(itemscope='', itemtype='http://schema.org/CreativeWork')
+  meta(itemprop='name', content='')
+  meta(itemprop='description', content='')
+  meta(itemprop='image logo', content='')
+  meta(itemprop='email', content='')
+  meta(itemprop='telephone', content='')
+  meta(itemprop='address', content='')
+  meta(itemprop='legalName', content='')
+  meta(itemprop='url', content='')
+  meta(itemprop='map', content='')
+
+  //- Open Graph data
+  meta(property='og:url', content='https://example.com')
+  meta(property='og:title', content='')
+  meta(property='og:description', content='')
+  meta(property='og:site_name', content='')
+  meta(property='og:image', content='')
+  meta(property='og:type', content='website')
+  meta(property='og:locale', content='en_US')
+  meta(property='fb:app_id', content='')
+
+  //- Twitter Card data
+  meta(name='twitter:card', content='summary')
+  meta(name='twitter:site', content='https://example.com')
+  meta(name='twitter:title', content='')
+  meta(name='twitter:description', content='')
+  meta(name='twitter:image', content='')
+
+  //- Website theme color
+  meta(name="theme-color", content="#000000")
+  meta(name='msapplication-navbutton-color', content='#000000')
+  meta(name='apple-mobile-web-app-status-bar-style', content='#000000')
+
+  //- Favicon, title, stylesheet
+  link(rel="shortcut icon", href="images/raster/favicon.png?v=2")
+  title #{pageTitle}  | Website Title
+  link(rel="stylesheet", href="css/master.css")
+
+  //- If JS is enabled, replace no-js with js
+  script.
+    (function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)
