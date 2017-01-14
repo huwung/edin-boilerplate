@@ -72,23 +72,21 @@ gulp.task('stylus:build', function () {
 // Concat, rename and uglify all JS
 
 var jsFiles = [
-  'assets/js/jquery.js',
-  'assets/js/pace.js',
-  'assets/js/TweenMax.js',
-  'assets/js/bez.js',
-  'assets/js/inview.js',
-  'assets/js/main.js'
+  'jquery.js',
+  'main.js'
 ];
+var jsFilesSource = jsFiles.map(function(e) {return 'assets/js/source/' + e});
+var jsFilesMinified = jsFiles.map(function(e) {return 'assets/js/minified/' + e});
 
 gulp.task('js:watch', function() {
-  gulp.src(jsFiles)
+  gulp.src(jsFilesSource)
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('js:build', function() {
-  gulp.src(jsFiles)
+  gulp.src(jsFilesMinified)
     .pipe(concat('scripts.js'))
     .pipe(uglify())
     .pipe(gulp.dest('build/js'));
@@ -96,23 +94,13 @@ gulp.task('js:build', function() {
 
 
 
-// Copy non-SVG images
-// Copy non-SVG image files to /build
-
-gulp.task('copy-non-svg', function() {
-  gulp.src('assets/images/raster/**/*')
-    .pipe(gulp.dest('build/images/raster'));
-});
-
-
-
 // Imagemin
-// Process only SVG images
+// Optimize all images
 
 gulp.task('imagemin', function() {
-  gulp.src('assets/images/vector/**/*')
+  gulp.src('assets/images/**/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('build/images/vector'))
+    .pipe(gulp.dest('build/images'))
     .pipe(browserSync.stream());
 });
 
@@ -148,8 +136,7 @@ gulp.task('watch-tasks', function() {
   gulp.watch('views/**/*.pug', ['pug:watch']);
   gulp.watch('assets/styles/**/*.styl', ['stylus:watch']);
   gulp.watch('assets/js/**/*.js', ['js:watch']);
-  gulp.watch('assets/images/vector/**/*', ['imagemin']);
-  gulp.watch('assets/images/raster/**/*', ['copy-non-svg']);
+  gulp.watch('assets/images/**/*', ['imagemin']);
 });
 
 
@@ -166,6 +153,6 @@ gulp.task('clean-build', function() {
 
 // Run Tasks
 
-gulp.task('watch', ['pug:watch', 'stylus:watch', 'js:watch', 'copy-non-svg', 'imagemin', 'copy-fonts', 'browser-sync', 'watch-tasks']);
-gulp.task('build', ['pug:build', 'stylus:build', 'js:build', 'copy-non-svg', 'imagemin', 'copy-fonts']);
+gulp.task('watch', ['pug:watch', 'stylus:watch', 'js:watch', 'imagemin', 'copy-fonts', 'browser-sync', 'watch-tasks']);
+gulp.task('build', ['pug:build', 'stylus:build', 'js:build', 'imagemin', 'copy-fonts']);
 gulp.task('clean', ['clean-build']);
