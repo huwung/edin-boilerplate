@@ -9,6 +9,7 @@ var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
     rename      = require('gulp-rename'),
     uglify      = require('gulp-uglify'),
+    ignore      = require('gulp-ignore'),
     del         = require('del');
 
 
@@ -20,7 +21,7 @@ var gulp        = require('gulp'),
 gulp.task('pug:watch', function() {
   var LOCALS = {};
 
-  gulp.src('views/*.pug')
+  gulp.src(['views/**/*.pug', '!views/_layout/**/*', '!views/_partials/**/*'])
     .pipe(pug({
       locals: LOCALS,
       pretty: true
@@ -33,7 +34,7 @@ gulp.task('pug:watch', function() {
 gulp.task('pug:build', function() {
   var LOCALS = {};
 
-  gulp.src('views/*.pug')
+  gulp.src(['views/**/*.pug', '!views/_layout/**/*', '!views/_partials/**/*'])
     .pipe(pug({
       locals: LOCALS,
       pretty: false
@@ -121,7 +122,10 @@ gulp.task('copy-fonts', function() {
 gulp.task('browser-sync', function() {
   browserSync.init({
     server: {
-      baseDir: "./build/"
+      baseDir: "./build/",
+      serveStaticOptions: {
+        extensions: ['html']
+      }
     }
   });
 });
