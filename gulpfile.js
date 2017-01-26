@@ -10,6 +10,7 @@ var gulp        = require('gulp'),
     rename      = require('gulp-rename'),
     uglify      = require('gulp-uglify'),
     ignore      = require('gulp-ignore'),
+    plumber     = require('gulp-plumber'),
     del         = require('del');
 
 
@@ -22,6 +23,7 @@ gulp.task('pug:watch', function() {
   var LOCALS = {};
 
   gulp.src(['views/**/*.pug', '!views/_layout/**/*', '!views/_partials/**/*'])
+    .pipe(plumber())
     .pipe(pug({
       locals: LOCALS,
       pretty: true
@@ -50,6 +52,7 @@ gulp.task('pug:build', function() {
 
 gulp.task('stylus:watch', function () {
   gulp.src('assets/styles/master.styl')
+    .pipe(plumber())
     .pipe(stylus({
       compress: false,
       use: [jeet(), nib(), rupture()]
@@ -81,6 +84,7 @@ var jsFilesMinified = jsFiles.map(function(e) {return 'assets/js/minified/' + e}
 
 gulp.task('js:watch', function() {
   gulp.src(jsFilesSource)
+    .pipe(plumber())
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream());
@@ -100,6 +104,7 @@ gulp.task('js:build', function() {
 
 gulp.task('imagemin', function() {
   gulp.src('assets/images/**/*')
+    .pipe(plumber())
     .pipe(imagemin())
     .pipe(gulp.dest('build/images'))
     .pipe(browserSync.stream());
@@ -111,6 +116,7 @@ gulp.task('imagemin', function() {
 
 gulp.task('copy-fonts', function() {
   gulp.src('assets/fonts/**/*')
+    .pipe(plumber())
     .pipe(gulp.dest('build/fonts/'))
 });
 
