@@ -79,8 +79,8 @@ var jsFiles = [
   'jquery.js',
   'main.js'
 ];
-var jsFilesSource = jsFiles.map(function(e) {return 'assets/js/source/' + e});
-var jsFilesMinified = jsFiles.map(function(e) {return 'assets/js/minified/' + e});
+var jsFilesSource = jsFiles.map(function(e) {return 'assets/js/source/' + e;});
+var jsFilesMinified = jsFiles.map(function(e) {return 'assets/js/minified/' + e;});
 
 gulp.task('js:watch', function() {
   gulp.src(jsFilesSource)
@@ -117,7 +117,7 @@ gulp.task('imagemin', function() {
 gulp.task('copy-fonts', function() {
   gulp.src('assets/fonts/**/*')
     .pipe(plumber())
-    .pipe(gulp.dest('build/fonts/'))
+    .pipe(gulp.dest('build/fonts/'));
 });
 
 
@@ -151,7 +151,7 @@ gulp.task('watch-tasks', function() {
 
 
 
-// Clean 
+// Clean
 // Clean 'build' folder
 
 gulp.task('clean-build', function() {
